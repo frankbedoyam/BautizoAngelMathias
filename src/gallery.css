@@ -1,103 +1,92 @@
-/* Fondo festivo azul-dorado */
+/* 🎉 Estilos generales */
 body {
-  background: radial-gradient(circle at top left, #e6f0ff, #fff8e1);
-  font-family: 'Segoe UI', sans-serif;
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #fdfdfd;
+}
+
+/* Contenedor principal */
+.gallery-container {
   position: relative;
-  overflow-x: hidden;
+  overflow: hidden;
+}
+
+/* Fondo de globos */
+.balloons-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0; /* detrás de todo */
+  pointer-events: none; /* no bloquea clics */
+}
+
+/* Globos individuales */
+.balloon {
+  position: absolute;
+  z-index: 1; /* debajo del contenido */
+  animation: float 12s infinite ease-in-out;
+}
+
+/* Animación de globos */
+@keyframes float {
+  0% { transform: translateY(100vh) scale(0.8); opacity: 0.7; }
+  50% { transform: translateY(50vh) scale(1); opacity: 1; }
+  100% { transform: translateY(-10vh) scale(0.9); opacity: 0.6; }
+}
+
+/* Contenido principal */
+.gallery-content {
+  position: relative;
+  z-index: 5; /* encima de globos */
+  padding: 2rem 1rem;
 }
 
 /* Título */
-h1 {
-  text-align: center;
-  color: #1565c0;
-  margin: 20px 0;
-  font-size: 2.2rem;
-  text-shadow: 2px 2px #ffd700;
-}
-
-/* Contenedor de imágenes */
-.gallery-container {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-  justify-content: center;
-  padding: 30px;
-  border-radius: 12px;
+.gallery-content h1 {
   position: relative;
+  z-index: 10; /* siempre arriba */
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+  color: #2c3e50;
 }
 
-/* Miniaturas */
-.gallery-img {
-  width: 200px;
-  height: 200px;
+/* Grid de miniaturas */
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 12px;
+}
+
+.gallery-grid img {
+  width: 100%;
+  height: auto;
   object-fit: cover;
-  border-radius: 12px;
-  cursor: pointer;
-  box-shadow: 0 6px 12px rgba(0,0,0,0.2);
-  transition: transform 0.3s ease, border 0.3s ease;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+  transition: transform 0.3s ease;
 }
 
-.gallery-img:hover {
-  transform: scale(1.1);
-  border: 4px solid #ffd700; /* borde dorado */
+.gallery-grid img:hover {
+  transform: scale(1.05);
 }
 
-/* 🎈 Globos multicolor */
-body::before,
-body::after {
-  content: "🎈 🎈 🎈";
-  font-size: 42px;
-  position: absolute;
-  animation: float 6s infinite ease-in-out;
-}
+/* 📱 Ajustes para móviles */
+@media (max-width: 768px) {
+  .balloon {
+    transform: scale(0.7); /* globos más pequeños */
+    opacity: 0.7;
+  }
 
-body::before {
-  top: 20px;
-  left: 30px;
-  color: #2196f3; /* azul */
-}
+  .gallery-content h1 {
+    font-size: 1.8rem; /* título más compacto */
+    margin-top: 2rem;  /* espacio extra arriba */
+  }
 
-body::after {
-  bottom: 20px;
-  right: 30px;
-  color: #ff4081; /* rosa festivo */
-}
-
-/* 🕊️ Palomas blancas */
-.gallery-container::before {
-  content: "🕊️ 🕊️ 🕊️";
-  font-size: 38px;
-  position: absolute;
-  top: 60px;
-  right: 50px;
-  animation: flutter 8s infinite ease-in-out;
-}
-
-/* 🌸 Flores doradas */
-.gallery-container::after {
-  content: "🌸 🌼 🌸 🌼";
-  font-size: 34px;
-  position: absolute;
-  bottom: 50px;
-  left: 40px;
-  animation: bloom 10s infinite ease-in-out;
-}
-
-/* Animaciones */
-@keyframes float {
-  0% { transform: translateY(0); }
-  50% { transform: translateY(-25px); }
-  100% { transform: translateY(0); }
-}
-
-@keyframes flutter {
-  0% { transform: translateX(0); }
-  50% { transform: translateX(-20px); }
-  100% { transform: translateX(0); }
-}
-
-@keyframes bloom {
-  0% { transform: scale(1); opacity: 0.8; }
-  50% { transform: scale(1.3); opacity: 1; }
-  100% { transform: scale(1); opacity: 0.8; }
+  .gallery-grid {
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    gap: 8px;
+  }
 }
