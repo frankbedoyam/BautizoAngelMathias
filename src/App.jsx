@@ -4,7 +4,8 @@ import "./gallery.css"; // estilos festivos
 function App() {
   return (
     <div>
-      <h1>🎉 Bautizo y primer cumpleaños de Ángel Mathías López Peña 🎉</h1>
+      <h3>🎉 Bautizo y primer cumpleaños 
+        de Ángel Mathías López Peña 🎉</h3>
       <BautizoGallery />
     </div>
   );
