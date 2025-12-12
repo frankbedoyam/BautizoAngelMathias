@@ -1,9 +1,18 @@
-.gallery-container {
+/* Fondo general */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
   background-color: #87ceeb; /* azul cielo */
-  min-height: 100vh;
-  padding: 1rem;
 }
 
+/* Contenedor principal */
+.gallery-container {
+  min-height: 100vh;
+  padding: 1rem;
+  background-color: #87ceeb;
+}
+
+/* Título */
 .gallery-title {
   text-align: center;
   font-size: 2rem;
@@ -11,18 +20,22 @@
   color: #2c3e50;
 }
 
+/* Grid de miniaturas */
 .gallery-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   gap: 12px;
 }
 
+/* Imagen de la galería como miniatura */
 .gallery-image {
-  width: 100%;
+  width: 150px;       /* tamaño fijo de miniatura en escritorio */
   height: auto;
   object-fit: cover;
   border-radius: 8px;
   cursor: pointer;
+  margin: 5px;
   box-shadow: 0 2px 6px rgba(0,0,0,0.15);
   transition: transform 0.3s ease;
 }
@@ -37,8 +50,7 @@
     font-size: 1.4rem;
   }
 
-  .gallery-grid {
-    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
-    gap: 8px;
+  .gallery-image {
+    width: 100px;   /* miniaturas más pequeñas en móvil */
   }
 }
